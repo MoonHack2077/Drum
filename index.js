@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
 
 
-
     const background = document.querySelector('.background');
 
     function clip (e){
@@ -20,8 +19,13 @@ document.addEventListener('DOMContentLoaded',()=>{
         const colorThree = randomNumber(0,9);
         const letters = ['a','b','c','d','e','f']
         const randomIndex = Math.floor(Math.random()*letters.length);
+        const randomIndex2 = Math.floor(Math.random()*letters.length);
+        const randomIndex3 = Math.floor(Math.random()*letters.length);
 
-        key.style.backgroundImage = `radial-gradient(#${colorOne}${letters[randomIndex]}${colorTwo}${letters[randomIndex]}${colorThree}${letters[randomIndex]}, #${colorTwo}${letters[randomIndex]}${colorThree}${letters[randomIndex]}${colorOne}${letters[randomIndex]})`
+        key.style.backgroundImage = `radial-gradient(#${colorOne}${letters[randomIndex]}${colorTwo}${letters[randomIndex2]}${colorThree}${letters[randomIndex3]}, #${colorTwo}${letters[randomIndex3]}${colorThree}${letters[randomIndex]}${colorOne}${letters[randomIndex2]})`
+        key.addEventListener('transitionend',()=>{
+            key.style.backgroundImage= 'none';        
+        })
 
         background.classList.add('gray');
         key.classList.add('playing');
@@ -32,12 +36,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     
     const keys = document.querySelectorAll('.key');
     keys.forEach(key => {
-        key.addEventListener('transitionend',()=>{
+        key.addEventListener('transitionend', ()=>{
             key.classList.remove('playing');
         })
     })
     
-    background.addEventListener('transitionend',()=>{
+    background.addEventListener('transitionend', ()=>{
         background.classList.remove('gray');
     })
     
