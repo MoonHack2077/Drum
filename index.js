@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         const audio = document.querySelector(`audio[alt-key="${e.keyCode}"]`);
         if(!audio) return
 
-        const colorOne = randomNumber(4,9);
-        const colorTwo = randomNumber(4,9);
-        const colorThree = randomNumber(4,9);
+        const colorOne = randomNumber(0,9);
+        const colorTwo = randomNumber(0,9);
+        const colorThree = randomNumber(0,9);
         const letters = ['a','b','c','d','e','f']
         const randomIndex = Math.floor(Math.random()*letters.length);
 
