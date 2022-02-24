@@ -12,10 +12,11 @@
     place-items: center;
 }
 
-img{
+.background{
     width: 100%;
     height: 100vh;
     filter: grayscale(0.5);
+    transition: all 0.5s;
 }
 
 .sounds{
@@ -25,7 +26,6 @@ img{
     flex-wrap: wrap;
     gap: 1.2em;
     justify-content: center;
-    /* background-image: linear-gradient(to right, );  */
     opacity: .8;
     position: absolute;
     margin: 0 1em;
@@ -47,7 +47,6 @@ img{
     transition: all .4s;
 }
 .playing{
-    outline: 2px solid #f53d4f;
     transform: scale(1.1);
     opacity: 1;
     color: #bbb;
@@ -56,7 +55,8 @@ img{
     /* color: #bbb; */
     text-align: center;   
 }
-.background{
+
+.gray{
     filter: grayscale(0);
 }
 
