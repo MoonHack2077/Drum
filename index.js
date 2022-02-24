@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
     const background = document.querySelector('.background');
+    const indication = document.querySelector('.indication');
 
     function clip (e){
         const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             key.style.backgroundImage= 'none';        
         })
 
+        indication.style.opacity= '0'
         background.classList.add('gray');
         key.classList.add('playing');
         audio.currentTime = 0;
