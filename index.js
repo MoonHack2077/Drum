@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 
         letters.sort(()=> Math.random() - 0.5);
         [randomLetter, randomLetter2, randomLetter3] = [randomColors().letter, randomColors().letter, randomColors().letter];
-        console.log(letters);
 
         
         key.style.backgroundImage = `radial-gradient(#${colorOne}${letters[randomLetter]}${colorTwo}${letters[randomLetter2]}${colorThree}${letters[randomLetter3]}, #${colorTwo}${letters[randomLetter3]}${colorThree}${letters[randomLetter]}${letters[randomLetter2]}${colorOne})`
