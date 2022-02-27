@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const background = document.querySelector('.background');
     const indication = document.querySelector('.indication');
 
-    function clip (e){
+    function hit (e){
         const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
         const audio = document.querySelector(`audio[alt-key="${e.keyCode}"]`);
         if(!audio) return
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         const randomIndex2 = Math.floor(Math.random()*letters.length);
         const randomIndex3 = Math.floor(Math.random()*letters.length);
 
-        key.style.backgroundImage = `radial-gradient(#${colorOne}${letters[randomIndex]}${colorTwo}${letters[randomIndex2]}${colorThree}${letters[randomIndex3]}, #${colorTwo}${letters[randomIndex3]}${colorThree}${letters[randomIndex]}${colorOne}${letters[randomIndex2]})`
+        key.style.backgroundImage = `radial-gradient(#${colorOne}${letters[randomIndex]}${colorTwo}${letters[randomIndex2]}${colorThree}${letters[randomIndex3]}, #${letters[randomIndex3]}${letters[randomIndex]}${letters[randomIndex2]}${colorThree}${colorTwo}${colorOne})`
         key.addEventListener('transitionend',()=>{
             key.style.backgroundImage= 'none';        
         })
@@ -47,5 +47,5 @@ document.addEventListener('DOMContentLoaded',()=>{
         background.classList.remove('gray');
     })
     
-    window.addEventListener('keydown',clip)
+    window.addEventListener('keydown',hit)
 })
