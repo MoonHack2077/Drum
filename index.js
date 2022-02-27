@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded',()=>{
-
     
+    let letters = ['a','b','c','d','e','f'];
     //Function for return a random number to become to random color
-    function randomNumber(min,max) {
-        return Math.floor(Math.random()*(max+1-min))+min;
+    function randomColors(min=0,max=0) {
+        return {
+            number: Math.floor(Math.random()*(max+1-min))+min,
+            letter: Math.floor(Math.random()*letters.length)
+        };
     }
-
 
     const background = document.querySelector('.background');
     const indication = document.querySelector('.indication');
@@ -13,17 +15,18 @@ document.addEventListener('DOMContentLoaded',()=>{
     function hit (e){
         const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
         const audio = document.querySelector(`audio[alt-key="${e.keyCode}"]`);
+
         if(!audio) return
 
-        const colorOne = randomNumber(0,9);
-        const colorTwo = randomNumber(0,9);
-        const colorThree = randomNumber(0,9);
-        const letters = ['a','b','c','d','e','f']
-        const randomIndex = Math.floor(Math.random()*letters.length);
-        const randomIndex2 = Math.floor(Math.random()*letters.length);
-        const randomIndex3 = Math.floor(Math.random()*letters.length);
+        [colorOne, colorTwo, colorThree] = [randomColors(0,9).number, randomColors(0,9).number, randomColors(0,9).number];
 
-        key.style.backgroundImage = `radial-gradient(#${colorOne}${letters[randomIndex]}${colorTwo}${letters[randomIndex2]}${colorThree}${letters[randomIndex3]}, #${letters[randomIndex3]}${letters[randomIndex]}${letters[randomIndex2]}${colorThree}${colorTwo}${colorOne})`
+        letters.sort(()=> Math.random() - 0.5);
+        [randomLetter, randomLetter2, randomLetter3] = [randomColors().letter, randomColors().letter, randomColors().letter];
+        console.log(letters);
+
+        
+        key.style.backgroundImage = `radial-gradient(#${colorOne}${letters[randomLetter]}${colorTwo}${letters[randomLetter2]}${colorThree}${letters[randomLetter3]}, #${colorTwo}${letters[randomLetter3]}${colorThree}${letters[randomLetter]}${letters[randomLetter2]}${colorOne})`
+
         key.addEventListener('transitionend',()=>{
             key.style.backgroundImage= 'none';        
         })
